@@ -1,6 +1,6 @@
 package code;
 
-
+import gui.Window;
 
 public class Main {
 
