@@ -37,6 +37,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JSpinner;
 
 
@@ -62,6 +63,8 @@ public class Window extends JFrame
 	private JButton startButton;
 	private JButton pauseButton;
 	private JButton resetButton;
+	private JMenuItem About;
+	private JMenuItem Options;
 	int eX = 0;
 	int eY = 0;
 	
@@ -78,18 +81,10 @@ public class Window extends JFrame
 		options = new JMenu("Options");
 		//Declare the Menu "About"
 		about = new JMenu("About");
-		//Container for the top labels (Time: Hours, Minutes, Seconds)
-		Container labels1 = new Container();
-		//Container for the time spinners
-		Container spinners = new Container();
-		//Container for the Remaining Label
-		Container label2 = new Container();
-		//Container for the remaining time labels
-		Container countlabels = new Container();
-		//Container for the always at top checkbox
-		Container checkbox = new Container();
-		//Container for the control buttons
-		Container buttons = new Container();
+		//Declare the Menu Item About
+		About = new JMenuItem("About");
+		//Declare the Menu Item Options
+		Options = new JMenuItem("Options");
 		//JLabel for the set time
 		timeLabel = new JLabel("Time:");
 		//JLabel for the set hours
@@ -144,6 +139,10 @@ public class Window extends JFrame
 		menu.add(options);
 		//Adds the Menu "about" to the menu bar
 		menu.add(about);
+		//Add the Menu Item to options
+		about.add(About);
+		//Add the Menu Item to about
+		options.add(Options);
 		//Set the components default font
 		setFonts(font);
 		//Calculate the default height and width for the empty components (spaces) between the gui components
@@ -239,25 +238,29 @@ public class Window extends JFrame
 		pack();
 	//------------------Actions-------------------------------
 		//Adds an action Listener to the Options Menu
-		options.addActionListener(new ActionListener()
+		Options.addActionListener(new ActionListener()
 		{
 				//actionPerformed method is called when the user press the menu options
 				@Override
 				public void actionPerformed(ActionEvent arg0)
 				{
 					//create an object of the class Options
-					new Options();
+					Options options = new Options();
+					//Make the options window be visible
+					options.setVisible(true);
 				}
 		});
 		//Adds an action Listener to the About Menu
-		about.addActionListener(new ActionListener()
+		About.addActionListener(new ActionListener()
 		{
 			//actionPerformed method is called when the user press the menu about
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
 				//Create an object of the class About
-				new About();
+				About about = new About();
+				//Make the about window be visible
+				about.setVisible(true);
 			}
 		});
 	}
@@ -286,6 +289,10 @@ public class Window extends JFrame
 		pauseButton.setFont(font);
 		//Set the reset button font
 		resetButton.setFont(font);
+		//Set the About Menu font
+		About.setFont(font);
+		//Set the Options Menu Font
+		Options.setFont(font);
 	}
 	private void addC(Component obj,int x, int y, int al, int an)
 	{
@@ -299,6 +306,5 @@ public class Window extends JFrame
 		constraints.gridwidth = an;
 		//Add the object to the gui in the specified position
 		add(obj,constraints);
-
 	}
 }
