@@ -16,6 +16,7 @@
 
 package code;
 
-public class MP3 {
+public class MP3 
+{
 
 }

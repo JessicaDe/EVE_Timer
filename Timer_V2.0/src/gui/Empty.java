@@ -13,10 +13,24 @@
 
     You should have received a copy of the GNU General Public License
     along with EVE_Timer.  If not, see <http://www.gnu.org/licenses/>.  */
+package gui;
 
-package code;
+import java.awt.Dimension;
 
-public class Wav 
+import javax.swing.JComponent;
+
+public class Empty extends JComponent
 {
-
+	public Empty(int x, int y)
+	{
+		setPreferredSize(new Dimension(x,y));
+		setMinimumSize(new Dimension(0,0));
+		setMaximumSize(new Dimension(Integer.MAX_VALUE,Integer.MAX_VALUE));
+	}
+	public Empty(Dimension dim)
+	{
+		setPreferredSize(dim);
+		setMinimumSize(new Dimension(0,0));
+		setMaximumSize(new Dimension(Integer.MAX_VALUE,Integer.MAX_VALUE));
+	}
 }
